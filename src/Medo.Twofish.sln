@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medo.Twofish.Tests", "..\te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E0BEEDCA-1C82-4224-B337-BFEF9114D9E6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleEncryption", "..\examples\SimpleEncryption\SimpleEncryption.csproj", "{558559AD-0D64-40C4-B805-F83CB7ADBBA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{20E7974D-78A9-4181-B6D1-63CFBD83576D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,17 @@ Global
 		{9CF919A4-4F24-4580-9E6A-225270D292E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF919A4-4F24-4580-9E6A-225270D292E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF919A4-4F24-4580-9E6A-225270D292E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{558559AD-0D64-40C4-B805-F83CB7ADBBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{558559AD-0D64-40C4-B805-F83CB7ADBBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{558559AD-0D64-40C4-B805-F83CB7ADBBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{558559AD-0D64-40C4-B805-F83CB7ADBBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9CF919A4-4F24-4580-9E6A-225270D292E7} = {E0BEEDCA-1C82-4224-B337-BFEF9114D9E6}
+		{558559AD-0D64-40C4-B805-F83CB7ADBBA9} = {20E7974D-78A9-4181-B6D1-63CFBD83576D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E20A9510-08FC-4D1E-B21D-76A750B70DB4}
