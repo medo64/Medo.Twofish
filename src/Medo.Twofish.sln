@@ -1,18 +1,18 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Medo.Twofish", "Medo.Twofish.csproj", "{AF66B088-7AFA-4083-B6B5-1BD0727954E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medo.Twofish", "Medo.Twofish.csproj", "{AF66B088-7AFA-4083-B6B5-1BD0727954E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "..\tests\Tests.csproj", "{9CF919A4-4F24-4580-9E6A-225270D292E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Medo.Twofish.Tests", "..\tests\Medo.Twofish.Tests.csproj", "{9CF919A4-4F24-4580-9E6A-225270D292E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E0BEEDCA-1C82-4224-B337-BFEF9114D9E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{AF66B088-7AFA-4083-B6B5-1BD0727954E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -23,5 +23,14 @@ Global
 		{9CF919A4-4F24-4580-9E6A-225270D292E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CF919A4-4F24-4580-9E6A-225270D292E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CF919A4-4F24-4580-9E6A-225270D292E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9CF919A4-4F24-4580-9E6A-225270D292E7} = {E0BEEDCA-1C82-4224-B337-BFEF9114D9E6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E20A9510-08FC-4D1E-B21D-76A750B70DB4}
 	EndGlobalSection
 EndGlobal
