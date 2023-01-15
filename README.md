@@ -22,5 +22,5 @@ ciphertext.
 
 
 
-[twofish]: https://www.schneier.com/academic/archives/1998/12/the_twofish_encrypti.html
+[twofish]: https://www.schneier.com/academic/twofish/
 [schneier]: https://www.schneier.com/
