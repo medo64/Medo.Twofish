@@ -1,6 +1,7 @@
 /* Josip Medved <jmedved@jmedved.com> * www.medo64.com * MIT License */
 /* Algorithm designed by Bruce Schneier */
 
+//2023-01-15: Cleanup
 //2022-12-20: Renamed to Twofish (was TwofishManaged)
 //2022-01-13: Fixing up padding support
 //2021-11-25: Refactored to use pattern matching
@@ -39,11 +40,11 @@ public sealed class Twofish : SymmetricAlgorithm {
     /// </summary>
     public Twofish()
         : base() {
-        base.KeySizeValue = KeySizeInBits;
-        base.BlockSizeValue = BlockSizeInBits;
-        base.FeedbackSizeValue = base.BlockSizeValue;
-        base.LegalBlockSizesValue = new KeySizes[] { new KeySizes(BlockSizeInBits, BlockSizeInBits, 0) };
-        base.LegalKeySizesValue = new KeySizes[] { new KeySizes(128, 256, 64) };  // 128, 192, or 256
+        KeySizeValue = KeySizeInBits;
+        BlockSizeValue = BlockSizeInBits;
+        FeedbackSizeValue = BlockSizeValue;
+        LegalBlockSizesValue = new KeySizes[] { new KeySizes(BlockSizeInBits, BlockSizeInBits, 0) };
+        LegalKeySizesValue = new KeySizes[] { new KeySizes(128, 256, 64) };  // 128, 192, or 256
 
         base.Mode = CipherMode.CBC;  // same as default
         base.Padding = PaddingMode.PKCS7;
@@ -100,7 +101,7 @@ public sealed class Twofish : SymmetricAlgorithm {
         get { return base.Mode; }
         set {
             switch (value) {
-                case CipherMode.CBC:break;
+                case CipherMode.CBC: break;
 #pragma warning disable CA5358 // While using ECB is not recommended, it's still supported
                 case CipherMode.ECB: break;
 #pragma warning restore CA5358 // Review cipher mode usage with cryptography experts
@@ -756,23 +757,23 @@ file sealed class TwofishTransform : ICryptoTransform {
 
 
     private static uint Mx_X(uint x) {
-        return (uint)(x ^ LFSR2(x)); //5B
+        return (x ^ LFSR2(x)); //5B
     }
 
     private static uint Mx_Y(uint x) {
-        return (uint)(x ^ LFSR1(x) ^ LFSR2(x)); //EF
+        return (x ^ LFSR1(x) ^ LFSR2(x)); //EF
     }
 
 
     private const uint MDS_GF_FDBK = 0x169; //primitive polynomial for GF(256)
 
     private static uint LFSR1(uint x) {
-        return (uint)((x >> 1) ^ (((x & 0x01) > 0) ? MDS_GF_FDBK / 2 : 0));
+        return ((x >> 1) ^ (((x & 0x01) > 0) ? MDS_GF_FDBK / 2 : 0));
     }
 
     static private uint LFSR2(uint x) {
-        return (uint)((x >> 2) ^ (((x & 0x02) > 0) ? MDS_GF_FDBK / 2 : 0)
-                               ^ (((x & 0x01) > 0) ? MDS_GF_FDBK / 4 : 0));
+        return ((x >> 2) ^ (((x & 0x02) > 0) ? MDS_GF_FDBK / 2 : 0)
+                         ^ (((x & 0x01) > 0) ? MDS_GF_FDBK / 4 : 0));
     }
 
     #endregion Reed-Solomon

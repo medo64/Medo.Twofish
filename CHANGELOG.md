@@ -3,6 +3,7 @@
 ## [2.0.0] - 2023-01-15
 
 - Moved to standalone package
+- Cleanup
 
 
 ## [1.0.0] - 2015-12-27
