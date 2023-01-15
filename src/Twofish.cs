@@ -99,11 +99,13 @@ public sealed class Twofish : SymmetricAlgorithm {
     public override CipherMode Mode {
         get { return base.Mode; }
         set {
+            switch (value) {
+                case CipherMode.CBC:break;
 #pragma warning disable CA5358 // While using ECB is not recommended, it's still supported
-            if (value is not CipherMode.CBC and not CipherMode.ECB) {
-                throw new CryptographicException("Cipher mode is not supported.");
-            }
+                case CipherMode.ECB: break;
 #pragma warning restore CA5358 // Review cipher mode usage with cryptography experts
+                default: throw new CryptographicException("Cipher mode is not supported.");
+            }
             base.Mode = value;
         }
     }
