@@ -134,8 +134,11 @@ function package() {
 }
 
 function nuget() {  # (api_key)
-    API_KEY="$1"
-    if [[ "$API_KEY" == "" ]]; then return 1; fi
+    API_KEY=`cat "$BASE_DIRECTORY/.nuget.key" | xargs`
+    if [[ "$API_KEY" == "" ]]; then
+        echo "${ANSI_RED}No key in .nuget.key!${ANSI_RESET}" >&2
+        return 1;
+    fi
     echo ".NET `dotnet --version`"
     dotnet nuget push "$BASE_DIRECTORY/dist/$PACKAGE_ID.$PACKAGE_VERSION.nupkg" \
                       --source "https://api.nuget.org/v3/index.json" \
@@ -170,7 +173,7 @@ while [ $# -gt 0 ]; do
         debug)      clean && debug || break ;;
         release)    clean && release || break ;;
         package)    clean && test && package || break ;;
-        nuget)      clean && test && package || break ; shift ; nuget "$1" || break ;;
+        nuget)      clean && test && package && nuget || break ;;
         test)       clean && test || break ;;
 
         *)  echo "${ANSI_RED}Unknown operation '$OPERATION'!${ANSI_RESET}" >&2 ; exit 1 ;;

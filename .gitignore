@@ -7,3 +7,5 @@
 **/obj
 **/.vs
 **/*.csproj.user
+
+.nuget.key
