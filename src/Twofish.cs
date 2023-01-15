@@ -555,50 +555,50 @@ file sealed class TwofishTransform : ICryptoTransform {
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static DWord F32(DWord x, DWord[] k32, int keyLen) {
         if (keyLen >= 256) {
-            x.B0 = (byte)(P8x8[P_04, x.B0] ^ k32[3].B0);
-            x.B1 = (byte)(P8x8[P_14, x.B1] ^ k32[3].B1);
-            x.B2 = (byte)(P8x8[P_24, x.B2] ^ k32[3].B2);
-            x.B3 = (byte)(P8x8[P_34, x.B3] ^ k32[3].B3);
+            x.B0 = (byte)(P8x8[P_04][x.B0] ^ k32[3].B0);
+            x.B1 = (byte)(P8x8[P_14][x.B1] ^ k32[3].B1);
+            x.B2 = (byte)(P8x8[P_24][x.B2] ^ k32[3].B2);
+            x.B3 = (byte)(P8x8[P_34][x.B3] ^ k32[3].B3);
         }
         if (keyLen >= 192) {
-            x.B0 = (byte)(P8x8[P_03, x.B0] ^ k32[2].B0);
-            x.B1 = (byte)(P8x8[P_13, x.B1] ^ k32[2].B1);
-            x.B2 = (byte)(P8x8[P_23, x.B2] ^ k32[2].B2);
-            x.B3 = (byte)(P8x8[P_33, x.B3] ^ k32[2].B3);
+            x.B0 = (byte)(P8x8[P_03][x.B0] ^ k32[2].B0);
+            x.B1 = (byte)(P8x8[P_13][x.B1] ^ k32[2].B1);
+            x.B2 = (byte)(P8x8[P_23][x.B2] ^ k32[2].B2);
+            x.B3 = (byte)(P8x8[P_33][x.B3] ^ k32[2].B3);
         }
         if (keyLen >= 128) {
-            x = MdsTable[0, P8x8[P_01, P8x8[P_02, x.B0] ^ k32[1].B0] ^ k32[0].B0]
-              ^ MdsTable[1, P8x8[P_11, P8x8[P_12, x.B1] ^ k32[1].B1] ^ k32[0].B1]
-              ^ MdsTable[2, P8x8[P_21, P8x8[P_22, x.B2] ^ k32[1].B2] ^ k32[0].B2]
-              ^ MdsTable[3, P8x8[P_31, P8x8[P_32, x.B3] ^ k32[1].B3] ^ k32[0].B3];
+            x = MdsTable[0][P8x8[P_01][P8x8[P_02][x.B0] ^ k32[1].B0] ^ k32[0].B0]
+              ^ MdsTable[1][P8x8[P_11][P8x8[P_12][x.B1] ^ k32[1].B1] ^ k32[0].B1]
+              ^ MdsTable[2][P8x8[P_21][P8x8[P_22][x.B2] ^ k32[1].B2] ^ k32[0].B2]
+              ^ MdsTable[3][P8x8[P_31][P8x8[P_32][x.B3] ^ k32[1].B3] ^ k32[0].B3];
         }
 
         return x;
     }
 
 
-    private static readonly uint P_01 = 0;
-    private static readonly uint P_02 = 0;
-    private static readonly uint P_03 = (P_01 ^ 1); //"extend" to larger key sizes
-    private static readonly uint P_04 = 1;
+    private const uint P_01 = 0;
+    private const uint P_02 = 0;
+    private const uint P_03 = (P_01 ^ 1);  // "extend" to larger key sizes
+    private const uint P_04 = 1;
 
-    private static readonly uint P_11 = 0;
-    private static readonly uint P_12 = 1;
-    private static readonly uint P_13 = (P_11 ^ 1);
-    private static readonly uint P_14 = 0;
+    private const uint P_11 = 0;
+    private const uint P_12 = 1;
+    private const uint P_13 = (P_11 ^ 1);
+    private const uint P_14 = 0;
 
-    private static readonly uint P_21 = 1;
-    private static readonly uint P_22 = 0;
-    private static readonly uint P_23 = (P_21 ^ 1);
-    private static readonly uint P_24 = 0;
+    private const uint P_21 = 1;
+    private const uint P_22 = 0;
+    private const uint P_23 = (P_21 ^ 1);
+    private const uint P_24 = 0;
 
-    private static readonly uint P_31 = 1;
-    private static readonly uint P_32 = 1;
-    private static readonly uint P_33 = (P_31 ^ 1);
-    private static readonly uint P_34 = 1;
+    private const uint P_31 = 1;
+    private const uint P_32 = 1;
+    private const uint P_33 = (P_31 ^ 1);
+    private const uint P_34 = 1;
 
-    private static readonly byte[,] P8x8 = {
-                                            {
+    private static readonly byte[][] P8x8 = new byte[][] {
+                                            new byte[] {
                                                 0xA9, 0x67, 0xB3, 0xE8, 0x04, 0xFD, 0xA3, 0x76,
                                                 0x9A, 0x92, 0x80, 0x78, 0xE4, 0xDD, 0xD1, 0x38,
                                                 0x0D, 0xC6, 0x35, 0x98, 0x18, 0xF7, 0xEC, 0x6C,
@@ -632,7 +632,7 @@ file sealed class TwofishTransform : ICryptoTransform {
                                                 0xCA, 0x10, 0x21, 0xF0, 0xD3, 0x5D, 0x0F, 0x00,
                                                 0x6F, 0x9D, 0x36, 0x42, 0x4A, 0x5E, 0xC1, 0xE0
                                             },
-                                            {
+                                            new byte[] {
                                                 0x75, 0xF3, 0xC6, 0xF4, 0xDB, 0x7B, 0xFB, 0xC8,
                                                 0x4A, 0xD3, 0xE6, 0x6B, 0x45, 0x7D, 0xE8, 0x4B,
                                                 0xD6, 0x32, 0xD8, 0xFD, 0x37, 0x71, 0xF1, 0xE1,
@@ -668,8 +668,8 @@ file sealed class TwofishTransform : ICryptoTransform {
                                             }
                                           };
 
-    private static readonly DWord[,] MdsTable = new DWord[4, 256];
-    private static bool MdsTableBuilt = false;
+    private static readonly DWord[][] MdsTable = new DWord[4][] { new DWord[256], new DWord[256], new DWord[256], new DWord[256] };
+    private static bool MdsTableBuilt;
     private static readonly object SyncRootBuildMds = new();
 
     private static void BuildMds() {
@@ -681,33 +681,33 @@ file sealed class TwofishTransform : ICryptoTransform {
             var mY = new byte[4];
 
             for (var i = 0; i < 256; i++) {
-                m1[0] = P8x8[0, i];     /* compute all the matrix elements */
+                m1[0] = P8x8[0][i];     /* compute all the matrix elements */
                 mX[0] = (byte)Mul_X(m1[0]);
                 mY[0] = (byte)Mul_Y(m1[0]);
 
-                m1[1] = P8x8[1, i];
+                m1[1] = P8x8[1][i];
                 mX[1] = (byte)Mul_X(m1[1]);
                 mY[1] = (byte)Mul_Y(m1[1]);
 
-                MdsTable[0, i].B0 = m1[1];
-                MdsTable[0, i].B1 = mX[1];
-                MdsTable[0, i].B2 = mY[1];
-                MdsTable[0, i].B3 = mY[1]; //SetMDS(0);
+                MdsTable[0][i].B0 = m1[1];
+                MdsTable[0][i].B1 = mX[1];
+                MdsTable[0][i].B2 = mY[1];
+                MdsTable[0][i].B3 = mY[1]; //SetMDS(0);
 
-                MdsTable[1, i].B0 = mY[0];
-                MdsTable[1, i].B1 = mY[0];
-                MdsTable[1, i].B2 = mX[0];
-                MdsTable[1, i].B3 = m1[0]; //SetMDS(1);
+                MdsTable[1][i].B0 = mY[0];
+                MdsTable[1][i].B1 = mY[0];
+                MdsTable[1][i].B2 = mX[0];
+                MdsTable[1][i].B3 = m1[0]; //SetMDS(1);
 
-                MdsTable[2, i].B0 = mX[1];
-                MdsTable[2, i].B1 = mY[1];
-                MdsTable[2, i].B2 = m1[1];
-                MdsTable[2, i].B3 = mY[1]; //SetMDS(2);
+                MdsTable[2][i].B0 = mX[1];
+                MdsTable[2][i].B1 = mY[1];
+                MdsTable[2][i].B2 = m1[1];
+                MdsTable[2][i].B3 = mY[1]; //SetMDS(2);
 
-                MdsTable[3, i].B0 = mX[0];
-                MdsTable[3, i].B1 = m1[0];
-                MdsTable[3, i].B2 = mY[0];
-                MdsTable[3, i].B3 = mX[0]; //SetMDS(3);
+                MdsTable[3][i].B0 = mX[0];
+                MdsTable[3][i].B1 = m1[0];
+                MdsTable[3][i].B2 = mY[0];
+                MdsTable[3][i].B3 = mX[0]; //SetMDS(3);
             }
 
             MdsTableBuilt = true;
