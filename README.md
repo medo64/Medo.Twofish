@@ -1,5 +1,5 @@
-Medo.Security.Cryptography.Twofish
-==================================
+Medo.Twofish
+=====-----==
 
 C# implementation of [Twofish][twofish] algorithm. Supports CBC and ECB cipher
 modes.

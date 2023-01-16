@@ -1,6 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <AssemblyName>Medo.Twofish</AssemblyName>
+    <RootNamespace>Medo.Security.Cryptography</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFrameworks>net7.0;net6.0</TargetFrameworks>
     <LangVersion>11.0</LangVersion>
@@ -8,8 +13,11 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <AssemblyName>Medo.Twofish</AssemblyName>
-    <RootNamespace>Medo.Security.Cryptography</RootNamespace>
+    <Deterministic>true</Deterministic>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
