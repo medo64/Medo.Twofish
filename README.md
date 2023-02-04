@@ -20,12 +20,8 @@ blocks before recombining them. This provides a high level of diffusion, which
 makes it difficult for an attacker to deduce the original plaintext from the
 ciphertext.
 
-
-## NuGet
-
-Project can be found on [NuGet][nuget].
-
-To install, use the following command:
+You can find packaged library at [NuGet][nuget] and add it you your application
+using the following command:
 
     dotnet add package Twofish
 
