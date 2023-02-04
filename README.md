@@ -21,6 +21,16 @@ makes it difficult for an attacker to deduce the original plaintext from the
 ciphertext.
 
 
+## NuGet
+
+Project can be found on [NuGet][nuget].
+
+To install, use the following command:
+
+    dotnet add package Twofish
+
+
 
 [twofish]: https://www.schneier.com/academic/twofish/
 [schneier]: https://www.schneier.com/
+[nuget]: https://www.nuget.org/packages/TwoFish/
