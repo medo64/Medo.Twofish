@@ -29,8 +29,8 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <PackageId>Twofish</PackageId>
-    <Version>2.0.0</Version>
+    <PackageId>Medo.Twofish</PackageId>
+    <Version>0.0.0</Version>
     <Authors>Josip Medved</Authors>
     <Copyright>Copyright (c) 2015 Josip Medved</Copyright>
     <Company>www.medo64.com</Company>
